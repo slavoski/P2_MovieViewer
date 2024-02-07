@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">P2 Movie Info</string>
+    <string name="information">This app will allow you to view a list of movies or randomly select a movie by pressing the buttons above. Return at any time by pressing the Home icon.</string>
+</resources>
