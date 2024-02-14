@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home_action"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/home_24px"
-        android:iconTint="?attr/colorSecondary"
         app:showAsAction="always" />
     <item
         android:id="@+id/library_action"
-        android:title="Library"
+        android:title="@string/library"
         android:icon="@drawable/video_library_24px"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        />
     <item
         android:id="@+id/movie_info_action"
-        android:title="Movie Info"
+        android:title="@string/movie_info"
         android:icon="@drawable/movie_24px"
         app:showAsAction="ifRoom"/>
 </menu>

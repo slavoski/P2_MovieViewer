@@ -8,30 +8,39 @@
         <variable name="viewModel" type="com.example.p2_movieviewer.MainActivityViewModel" />
     </data>
 
+         <androidx.drawerlayout.widget.DrawerLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/drawer"
+             tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.Material3.Light"
-            app:title="Movie Viewer"/>
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:elevation="4dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                    app:popupTheme="@style/ThemeOverlay.Material3.Light"
+                    app:title="Movie Viewer"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/information"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:padding="25dp"/>
+             </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+             <com.google.android.material.navigation.NavigationView
+                 android:id="@+id/navigation_view"
+                 android:layout_gravity="start"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 app:headerLayout="@layout/header_layout"
+                 app:menu="@menu/menu_navigation_drawer"
+                 />
+
+         </androidx.drawerlayout.widget.DrawerLayout>
+
+
 </layout>
