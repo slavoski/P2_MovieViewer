@@ -15,7 +15,7 @@ import java.util.List;
 
 public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.ViewHolder> {
 
-    List<Movie> movie_list;
+    final List<Movie> movie_list;
     RecyclerItemClickListener recyclerListener = null;
     ViewHolder viewHolder = null;
 
@@ -73,15 +73,15 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView movie_name;
-        public TextView movie_year;
-        public ImageView poster_img;
+        final public TextView movie_name;
+        final public TextView movie_year;
+        final public ImageView poster_img;
 
         public ViewHolder(View view) {
             super(view);
-            movie_name = (TextView) view.findViewById(R.id.movie_name);
-            movie_year = (TextView) view.findViewById(R.id.movie_year);
-            poster_img = (ImageView) view.findViewById(R.id.poster_photo);
+            movie_name = view.findViewById(R.id.movie_name);
+            movie_year = view.findViewById(R.id.movie_year);
+            poster_img = view.findViewById(R.id.poster_photo);
         }
     }
 }

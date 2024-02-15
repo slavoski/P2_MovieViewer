@@ -13,18 +13,9 @@ public class AboutMeFragment extends Fragment {
    public AboutMeFragment() {
     }
 
-    public static AboutMeFragment newInstance() {
-        AboutMeFragment fragment = new AboutMeFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override

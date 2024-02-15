@@ -2,11 +2,9 @@ package com.example.p2_movieviewer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -32,9 +30,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setContentView(R.layout.activity_main);
 
-        toolbar = (MaterialToolbar)findViewById(R.id.toolbar);
-        navigationView = (NavigationView)findViewById(R.id.navigation_view);
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
+        toolbar = findViewById(R.id.toolbar);
+        navigationView = findViewById(R.id.navigation_view);
+        drawerLayout = findViewById(R.id.drawer);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null)
@@ -91,7 +89,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         String intentClass = getIntent().getComponent().getShortClassName();
 
-        if ( (id == R.id.home_menu_option || id == R.id.home_action) &&  !intentClass.equals(".MainActivity"))
+        if(intentClass == null)
+            intentClass = "";
+
+        if ( (id == R.id.home_menu_option || id == R.id.home_action) && !intentClass.equals(".MainActivity"))
         {
             startActivity(new Intent(MainActivity.this, MainActivity.class));
         }

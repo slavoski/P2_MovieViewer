@@ -5,14 +5,10 @@ import java.util.List;
 
 public class MovieData {
 
-    List<Movie> moviesList;
+    final List<Movie> moviesList;
 
     public List<Movie> getMoviesList() {
         return moviesList;
-    }
-
-    public int getSize() {
-        return moviesList.size();
     }
 
     public Movie getItem(int i) {
