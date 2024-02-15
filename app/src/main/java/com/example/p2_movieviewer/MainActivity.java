@@ -1,6 +1,8 @@
 package com.example.p2_movieviewer;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,12 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     MaterialToolbar toolbar;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -43,19 +49,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onDrawerOpened(View drawerView){
                 super.onDrawerOpened(drawerView);
-                Toast.makeText(MainActivity.this, "hurray", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                Toast.makeText(MainActivity.this, "Boo", Toast.LENGTH_SHORT).show();
+
             }
         };
 
         navigationView.setNavigationItemSelectedListener(this);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragmentContainer, new AboutMeFragment());
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -66,7 +77,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return PerformMenuItem(item);
+        boolean result = PerformMenuItem(item);
+        drawerLayout.closeDrawer(GravityCompat.START, true);
+        return result;
     }
 
     public boolean onMenuItemClick(MenuItem item) {
@@ -76,14 +89,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean PerformMenuItem(MenuItem item)
     {
         int id = item.getItemId();
+        String intentClass = getIntent().getComponent().getShortClassName();
 
-        if (id == R.id.home_menu_option)
+        if ( (id == R.id.home_menu_option || id == R.id.home_action) &&  !intentClass.equals(".MainActivity"))
         {
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
         }
-        else if (id == R.id.library_menu_option)
+        else if ((id == R.id.library_menu_option || id == R.id.library_action) && !intentClass.equals(".MovieLibraryActivity") )
         {
+            startActivity(new Intent(MainActivity.this, MovieLibraryActivity.class));
         }
-        else if (id == R.id.movie_info_menu_option)
+        else if (id == R.id.movie_info_menu_option || id == R.id.movie_info_action)
         {
         }
 
