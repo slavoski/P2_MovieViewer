@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
+
 
 public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.ViewHolder> {
 
@@ -57,9 +57,13 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
         {
             holder.poster_img.setImageResource(movie.resource_id);
         }
-        else
-        {
-            Picasso.get().load(movie.url).into(holder.poster_img);
+        else {
+            try {
+
+                Picasso.get().load(movie.url).into(holder.poster_img);
+            } catch (Exception e) {
+                e.toString();
+            }
         }
 
     }
