@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     MaterialToolbar toolbar;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +64,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
+        LoadFragment(new AboutMeFragment());
+    }
+
+    private void LoadFragment(Fragment fragment)
+    {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainer, new AboutMeFragment());
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
     }
 
     @Override
@@ -92,9 +102,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(intentClass == null)
             intentClass = "";
 
-        if ( (id == R.id.home_menu_option || id == R.id.home_action) && !intentClass.equals(".MainActivity"))
+        if ( id == R.id.home_menu_option || id == R.id.home_action )
         {
-            startActivity(new Intent(MainActivity.this, MainActivity.class));
+            //startActivity(new Intent(MainActivity.this, MainActivity.class));
+            LoadFragment(new AboutMeFragment());
         }
         else if ((id == R.id.library_menu_option || id == R.id.library_action) && !intentClass.equals(".MovieLibraryActivity") )
         {
@@ -102,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.movie_info_menu_option || id == R.id.movie_info_action)
         {
+            LoadFragment(new MovieDetailFragment());
         }
 
         return true;

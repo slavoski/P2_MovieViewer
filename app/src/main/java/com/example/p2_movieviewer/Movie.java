@@ -5,6 +5,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -20,7 +21,9 @@ public class Movie {
     String url;
     String desc;
     String director;
-    final Double rating;
+    String rating;
+    String awards;
+    String genre;
     Integer resource_id;
 
     public Movie(String name)
@@ -32,8 +35,10 @@ public class Movie {
         this.url = "";
         this.desc = "";
         this.director = "";
-        this.rating = -1.0;
+        this.rating = "";
         this.resource_id = -1;
+        this.awards = "";
+        this.genre = "";
     }
 
     public void GetImage()
@@ -45,7 +50,7 @@ public class Movie {
             HttpURLConnection conn = (HttpURLConnection) movieUrl.openConnection();
             conn.setRequestMethod("GET");
 
-            java.io.InputStream stream = conn.getInputStream();
+            InputStream stream = conn.getInputStream();
 
             JSONParser jsonParser = new JSONParser();
             InputStreamReader movieInfo = new InputStreamReader(stream, StandardCharsets.UTF_8);
@@ -54,12 +59,13 @@ public class Movie {
             url = setMovieField(jsonObject, url, "Poster");
             name = setMovieField(jsonObject, name, "Title");
             year = setMovieField(jsonObject, year, "Year");
-            //setMovieField(jsonObject, rating, "Rated");
+            rating = setMovieField(jsonObject, rating, "imdbRating");
             desc = setMovieField(jsonObject, desc, "Plot");
             length = setMovieField(jsonObject, length, "Runtime");
             director = setMovieField(jsonObject, director, "Director");
             cast = setMovieField(jsonObject, cast, "Actors");
-
+            awards = setMovieField(jsonObject, awards, "Awards");
+            genre = setMovieField(jsonObject, genre, "Genre");
 
         } catch (MalformedURLException e) {
 

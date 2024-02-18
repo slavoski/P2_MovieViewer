@@ -2,6 +2,7 @@ package com.example.p2_movieviewer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MovieData {
 
@@ -11,10 +12,44 @@ public class MovieData {
         return moviesList;
     }
 
+    public int getMoviesSize() { return moviesList.size(); }
+
     public Movie getItem(int i) {
         if (i >= 0 && i < moviesList.size()) {
             return moviesList.get(i);
         } else return null;
+    }
+
+    public Movie getMovie(int index)
+    {
+        Movie result;
+
+        if (index >= 0 && index < moviesList.size()) {
+            result = moviesList.get(index);
+        } else result = null;
+
+        if(result != null)
+        {
+            Thread thread = new Thread(() -> {
+                try  {
+                    result.GetImage();
+                }
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
+            thread.start();
+
+            try {
+                thread.join();
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+
+        return result;
     }
 
     public MovieData() {
@@ -51,7 +86,10 @@ public class MovieData {
         moviesList.add(new Movie("Alice in Wonderland"));
         moviesList.add(new Movie("Forrest Gump"));
         moviesList.add(new Movie("Independence Day"));
+    }
 
+    public void InitializeMovies()
+    {
         Thread thread = new Thread(() -> {
             try  {
                 for (Movie movie : moviesList) {
@@ -62,7 +100,13 @@ public class MovieData {
             }
         });
         thread.start();
-
+        try {
+            thread.join();
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
 }
