@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -52,6 +53,8 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
     public void onBindViewHolder(@NonNull SimpleRecyclerAdapter.ViewHolder holder, int position) {
         Movie movie = movies.getItem(position);
         holder.movie_year.setText(movie.year);
+
+        ViewCompat.setTransitionName(holder.poster_img, movie.name);
 
         if(movie.resource_id != -1)
         {

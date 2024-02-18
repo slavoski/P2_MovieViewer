@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MovieLibraryActivity extends AppCompatActivity implements RecyclerItemClickListener {
 
-    private SimpleRecyclerAdapter simpleRecyclerAdapter;
+    private SimpleRecyclerAdapter simpleRecyclerAdapter = new SimpleRecyclerAdapter();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +25,6 @@ public class MovieLibraryActivity extends AppCompatActivity implements RecyclerI
 
         recyclerView.setLayoutManager(layoutManager);
 
-        simpleRecyclerAdapter = new SimpleRecyclerAdapter();
         simpleRecyclerAdapter.setOnItemClickListener(this);
 
         recyclerView.setAdapter(simpleRecyclerAdapter);
@@ -34,7 +33,7 @@ public class MovieLibraryActivity extends AppCompatActivity implements RecyclerI
     }
 
     @Override
-    public void onItemClick(View v, int position) {
+    public void onItemClick(View v, int selected_movie) {
 
     }
 }

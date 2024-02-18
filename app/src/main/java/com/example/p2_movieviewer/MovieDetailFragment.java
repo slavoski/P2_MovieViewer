@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.squareup.picasso.Picasso;
@@ -29,7 +30,21 @@ public class MovieDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         MovieData tempMovies = new MovieData();
-        Movie movie = tempMovies.getMovie(rand.nextInt(tempMovies.getMoviesSize() - 1));
+
+        Movie movie = null;
+
+        Bundle args = getArguments();
+
+        if(args != null) {
+            int movieID = args.getInt("MovieID", -1);
+            if (movieID != -1) {
+                movie = tempMovies.getMovie(movieID);
+            }
+        }
+        else if (movie == null) {
+            movie = tempMovies.getMovie(rand.nextInt(tempMovies.getMoviesSize() - 1));
+        }
+
 
 
         // Inflate the layout for this fragment
@@ -72,7 +87,7 @@ public class MovieDetailFragment extends Fragment {
             }
         }
 
-
+        ViewCompat.setTransitionName(image, movie.name);
 
         return view;
 

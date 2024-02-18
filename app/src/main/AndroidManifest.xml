@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.P2_MovieViewer"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
+        tools:targetApi="34" >
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -27,6 +27,11 @@
         </activity>
         <activity
             android:name=".MovieLibraryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.P2_MovieViewer" >
+        </activity>
+        <activity
+            android:name=".MasterDetail"
             android:exported="false"
             android:theme="@style/Theme.P2_MovieViewer" >
         </activity>

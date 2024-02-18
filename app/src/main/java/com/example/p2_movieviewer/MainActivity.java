@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if ((id == R.id.library_menu_option || id == R.id.library_action) && !intentClass.equals(".MovieLibraryActivity") )
         {
-            startActivity(new Intent(MainActivity.this, MovieLibraryActivity.class));
+            startActivity(new Intent(MainActivity.this, MasterDetail.class));
         }
         else if (id == R.id.movie_info_menu_option || id == R.id.movie_info_action)
         {
