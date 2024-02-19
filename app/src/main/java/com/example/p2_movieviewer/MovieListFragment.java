@@ -23,14 +23,18 @@ public class MovieListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View rootView = inflater.inflate(R.layout.fragment_movie_list, container, false);
-        RecyclerView recyclerView = rootView.findViewById(R.id.movie_library_recycler);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        View rootView = inflater.inflate(R.layout.fragment_movie_list, container, false);
+        RecyclerView recyclerView = rootView.findViewById(R.id.movie_list_fragment);
+
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         layoutManager.scrollToPosition(0);
+
         recyclerView.setLayoutManager(layoutManager);
+
         recyclerView.setAdapter(myRecyclerAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         return rootView;
     }
 

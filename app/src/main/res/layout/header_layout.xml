@@ -18,6 +18,4 @@
         android:contentDescription="@string/library"
         />
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

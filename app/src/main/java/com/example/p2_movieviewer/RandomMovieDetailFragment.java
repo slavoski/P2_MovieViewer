@@ -14,10 +14,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Random;
 
-public class MovieDetailFragment extends Fragment {
+public class RandomMovieDetailFragment extends Fragment {
 
-    public MovieDetailFragment() {
-
+    private Random rand;
+    public RandomMovieDetailFragment() {
+        rand = new Random();
     }
 
     @Override
@@ -32,20 +33,10 @@ public class MovieDetailFragment extends Fragment {
 
         Movie movie = null;
 
-        Bundle args = getArguments();
-
-        if(args != null) {
-            int movieID = args.getInt("MovieID", -1);
-            if (movieID != -1) {
-                movie = tempMovies.getMovie(movieID);
-            }
-        }
-        else {
-            movie = tempMovies.getMovie(0);
-        }
+        movie = tempMovies.getMovie(rand.nextInt(tempMovies.getMoviesSize() - 1));
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.card_view_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_random_movie, container, false);
 
         TextView name = view.findViewById(R.id.movie_name);
         name.setText(movie.name);
@@ -83,8 +74,6 @@ public class MovieDetailFragment extends Fragment {
                 e.toString();
             }
         }
-
-        ViewCompat.setTransitionName(image, movie.name);
 
         return view;
 

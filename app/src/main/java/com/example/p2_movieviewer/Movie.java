@@ -25,6 +25,7 @@ public class Movie {
     String awards;
     String genre;
     Integer resource_id;
+    Integer id;
 
     public Movie(String name)
     {
@@ -39,6 +40,7 @@ public class Movie {
         this.resource_id = -1;
         this.awards = "";
         this.genre = "";
+        this.id = -1;
     }
 
     public void GetImage()

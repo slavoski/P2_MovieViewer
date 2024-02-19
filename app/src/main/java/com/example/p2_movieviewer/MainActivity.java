@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if ( id == R.id.home_menu_option || id == R.id.home_action )
         {
-            //startActivity(new Intent(MainActivity.this, MainActivity.class));
             LoadFragment(new AboutMeFragment());
         }
         else if ((id == R.id.library_menu_option || id == R.id.library_action) && !intentClass.equals(".MovieLibraryActivity") )
@@ -113,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.movie_info_menu_option || id == R.id.movie_info_action)
         {
-            LoadFragment(new MovieDetailFragment());
+            LoadFragment(new RandomMovieDetailFragment());
         }
 
         return true;

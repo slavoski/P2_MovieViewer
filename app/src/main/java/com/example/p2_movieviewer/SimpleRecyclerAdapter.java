@@ -16,9 +16,8 @@ import java.util.List;
 
 public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.ViewHolder> {
 
-    final MovieData movies;
+    MovieData movies;
     RecyclerItemClickListener recyclerListener = null;
-    ViewHolder viewHolder = null;
 
     public SimpleRecyclerAdapter(){
         movies = new MovieData();
@@ -29,11 +28,18 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_view_layout, parent, false);
-        viewHolder = new ViewHolder(view);
+        final ViewHolder view_holder = new ViewHolder(view);
 
-        view.setOnClickListener(this::onMenuItemClick);
-
-        return viewHolder;
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(recyclerListener != null)
+                {
+                    recyclerListener.onItemClick(view.findViewById(R.id.poster_photo), view_holder.getAdapterPosition());
+                }
+            }
+        });
+        return view_holder;
     }
 
     public void setOnItemClickListener(RecyclerItemClickListener recyclerItemClickListener)
@@ -41,18 +47,11 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
         recyclerListener = recyclerItemClickListener;
     }
 
-    public void onMenuItemClick(View view) {
-       if(recyclerListener != null)
-       {
-           recyclerListener.onItemClick(view, viewHolder.getAdapterPosition());
-       }
-    }
-
-
     @Override
     public void onBindViewHolder(@NonNull SimpleRecyclerAdapter.ViewHolder holder, int position) {
         Movie movie = movies.getItem(position);
         holder.movie_year.setText(movie.year);
+        holder.movie_name.setText(movie.name);
 
         ViewCompat.setTransitionName(holder.poster_img, movie.name);
 
@@ -80,11 +79,15 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        final public TextView movie_name;
         final public TextView movie_year;
         final public ImageView poster_img;
 
+        public String name;
+
         public ViewHolder(View view) {
             super(view);
+            movie_name = view.findViewById(R.id.movie_name);
             movie_year = view.findViewById(R.id.movie_year);
             poster_img = view.findViewById(R.id.poster_photo);
         }
