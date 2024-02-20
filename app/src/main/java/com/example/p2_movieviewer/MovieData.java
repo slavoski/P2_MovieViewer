@@ -1,6 +1,8 @@
 package com.example.p2_movieviewer;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -60,7 +62,6 @@ public class MovieData {
         moviesList.add(new Movie("The Dark Knight"));
         moviesList.add(new Movie("Star Wars: Episode I"));
         moviesList.add(new Movie("Star Wars: Episode IV - A New Hope "));
-        moviesList.add(new Movie("The Dark Knight Rises"));
         moviesList.add(new Movie("Shrek 2"));
         moviesList.add(new Movie("The Dark Knight Rises"));
         moviesList.add(new Movie("E.T. the Extra-Terrestrial"));
@@ -86,6 +87,8 @@ public class MovieData {
         moviesList.add(new Movie("Alice in Wonderland"));
         moviesList.add(new Movie("Forrest Gump"));
         moviesList.add(new Movie("Independence Day"));
+        moviesList.add(new Movie("The Chosen"));
+
     }
 
     public void InitializeMovies()

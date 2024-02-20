@@ -16,5 +16,10 @@
             android:title="@string/movie_info"
             android:icon="@drawable/movie_24px"
             />
+        <item
+            android:id="@+id/movie_details_menu_option"
+            android:title="@string/movie_details"
+            android:icon="@drawable/tabs_24px"
+            />
     </group>
 </menu>

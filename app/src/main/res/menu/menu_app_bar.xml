@@ -17,4 +17,10 @@
         android:title="@string/movie_info"
         android:icon="@drawable/movie_24px"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/movie_details_action"
+        android:title="@string/movie_details"
+        android:icon="@drawable/tabs_24px"
+        app:showAsAction="ifRoom"
+        />
 </menu>

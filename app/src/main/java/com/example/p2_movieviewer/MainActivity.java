@@ -19,13 +19,13 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     MaterialToolbar toolbar;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean PerformMenuItem(MenuItem item)
     {
         int id = item.getItemId();
-        String intentClass = getIntent().getComponent().getShortClassName();
+        String intentClass = Objects.requireNonNull(getIntent().getComponent()).getShortClassName();
 
         if(intentClass == null)
             intentClass = "";
@@ -113,6 +113,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (id == R.id.movie_info_menu_option || id == R.id.movie_info_action)
         {
             LoadFragment(new RandomMovieDetailFragment());
+        }
+        else if(id == R.id.movie_details_menu_option || id == R.id.movie_details_action)
+        {
+            startActivity(new Intent(MainActivity.this, MovieDetailViewPager.class));
         }
 
         return true;

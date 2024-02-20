@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
@@ -16,8 +17,8 @@ import java.util.Random;
 
 public class MovieDetailFragment extends Fragment {
 
+    final MovieData _movieData = new MovieData();
     public MovieDetailFragment() {
-
     }
 
     @Override
@@ -28,7 +29,9 @@ public class MovieDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        MovieData tempMovies = new MovieData();
+        View view = inflater.inflate(R.layout.card_view_layout, container, false);
+
+        try {
 
         Movie movie = null;
 
@@ -37,15 +40,14 @@ public class MovieDetailFragment extends Fragment {
         if(args != null) {
             int movieID = args.getInt("MovieID", -1);
             if (movieID != -1) {
-                movie = tempMovies.getMovie(movieID);
+                movie = _movieData.getMovie(movieID);
             }
         }
         else {
-            movie = tempMovies.getMovie(0);
+            movie = _movieData.getMovie(0);
         }
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.card_view_layout, container, false);
 
         TextView name = view.findViewById(R.id.movie_name);
         name.setText(movie.name);
@@ -79,12 +81,20 @@ public class MovieDetailFragment extends Fragment {
         else {
             try {
                 Picasso.get().load(movie.url).into(image);
-            } catch (Exception e) {
-                e.toString();
+            } catch (Exception ex) {
+                Toast toast = Toast.makeText(getContext(), ex.toString(), Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
 
         ViewCompat.setTransitionName(image, movie.name);
+
+        }
+        catch(Exception ex)
+        {
+            Toast toast = Toast.makeText(getContext(), ex.toString(), Toast.LENGTH_SHORT);
+            toast.show();
+        }
 
         return view;
 

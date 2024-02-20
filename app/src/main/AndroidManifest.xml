@@ -35,6 +35,11 @@
             android:exported="false"
             android:theme="@style/Theme.P2_MovieViewer" >
         </activity>
+        <activity
+            android:name=".MovieDetailViewPager"
+            android:exported="false"
+            android:theme="@style/Theme.P2_MovieViewer" >
+        </activity>
     </application>
 
 </manifest>
