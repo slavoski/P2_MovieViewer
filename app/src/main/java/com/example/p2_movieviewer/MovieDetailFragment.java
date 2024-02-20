@@ -53,17 +53,17 @@ public class MovieDetailFragment extends Fragment {
                 TextView year = view.findViewById(R.id.year);
                 year.setText(String.format("%s%s", getString(R.string.year), movie.year));
                 TextView time = view.findViewById(R.id.running_time);
-                time.setText(getString(R.string.runtime) + movie.length);
+                time.setText(String.format("%s%s", getString(R.string.runtime), movie.length));
                 TextView director = view.findViewById(R.id.director);
-                director.setText(getString(R.string.director) + movie.director);
+                director.setText(String.format("%s%s", getString(R.string.director), movie.director));
                 TextView cast = view.findViewById(R.id.cast);
-                cast.setText(getString(R.string.cast) + movie.cast);
+                cast.setText(String.format("%s%s", getString(R.string.cast), movie.cast));
                 TextView genre = view.findViewById(R.id.genre);
-                genre.setText(getString(R.string.genre) + movie.genre);
+                genre.setText(String.format("%s%s", getString(R.string.genre), movie.genre));
                 TextView awards = view.findViewById(R.id.awards);
-                awards.setText(getString(R.string.awards) + movie.awards);
+                awards.setText(String.format("%s%s", getString(R.string.awards), movie.awards));
                 TextView desc = view.findViewById(R.id.desc);
-                desc.setText(getString(R.string.description) + movie.desc);
+                desc.setText(String.format("%s%s", getString(R.string.description), movie.desc));
                 ImageView image = view.findViewById(R.id.image);
                 if (movie.resource_id != -1)
                 {
