@@ -51,7 +51,7 @@ public class MovieDetailFragment extends Fragment {
                 TextView name = view.findViewById(R.id.movie_name);
                 name.setText(movie.name);
                 TextView year = view.findViewById(R.id.year);
-                year.setText(getString(R.string.year) + movie.year);
+                year.setText(String.format("%s%s", getString(R.string.year), movie.year));
                 TextView time = view.findViewById(R.id.running_time);
                 time.setText(getString(R.string.runtime) + movie.length);
                 TextView director = view.findViewById(R.id.director);
