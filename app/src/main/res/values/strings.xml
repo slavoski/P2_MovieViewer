@@ -5,7 +5,7 @@
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_closed">Close Navigation Drawer</string>
     <string name="library">Library</string>
-    <string name="movie_info">Movie Info</string>
+    <string name="movie_info">Random Movie Info</string>
     <string name="movie_image">Movie Image</string>
     <string name="title_activity_movie_detail_host">MovieDetailHostActivity</string>
     <string name="title_movie_list">Movies</string>
