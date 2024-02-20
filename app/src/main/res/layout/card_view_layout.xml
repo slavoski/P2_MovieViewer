@@ -2,7 +2,6 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="25dp"
@@ -12,7 +11,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_height="wrap_content"
         android:layout_width="300dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/movieDetails"

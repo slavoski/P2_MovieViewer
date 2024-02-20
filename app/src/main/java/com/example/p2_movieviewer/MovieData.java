@@ -1,18 +1,12 @@
 package com.example.p2_movieviewer;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
+
 
 public class MovieData {
 
     final List<Movie> moviesList;
-
-    public List<Movie> getMoviesList() {
-        return moviesList;
-    }
 
     public int getMoviesSize() { return moviesList.size(); }
 

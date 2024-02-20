@@ -11,4 +11,11 @@
     <string name="title_movie_list">Movies</string>
     <string name="title_movie_detail">Movie Detail</string>
     <string name="movie_details">Movie Details</string>
+    <string name="year">"Year: "</string>
+    <string name="runtime">"Runtime: "</string>
+    <string name="director">"Director: "</string>
+    <string name="cast">"Cast: "</string>
+    <string name="genre">"Genre: "</string>
+    <string name="awards">"Awards: "</string>
+    <string name="description">"Description: "</string>
 </resources>
